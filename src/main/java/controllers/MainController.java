@@ -45,50 +45,39 @@ public class MainController {
 
     @FXML
     private void handleAddButton() {
-        // Get the input from the text fields
         int id = Integer.parseInt(idTextField.getText());
         String name = nameTextField.getText();
         String email = emailTextField.getText();
         String major = majorTextField.getText();
 
-        // Create a new Student object
         Student newStudent = new Student(id, name, email, major);
 
-        // Add the new student to the table
         studentTableView.getItems().add(newStudent);
 
-        // Clear the text fields
         clearTextFields();
     }
 
     @FXML
     private void handleUpdateButton() {
-        // Get the selected student from the table
         Student selectedStudent = studentTableView.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
-            // Update the selected student's information
             selectedStudent.setId(Integer.parseInt(idTextField.getText()));
             selectedStudent.setName(nameTextField.getText());
             selectedStudent.setEmail(emailTextField.getText());
             selectedStudent.setMajor(majorTextField.getText());
 
-            // Refresh the table view
             studentTableView.refresh();
 
-            // Clear the text fields
             clearTextFields();
         }
     }
 
     @FXML
     private void handleDeleteButton() {
-        // Get the selected student from the table
         Student selectedStudent = studentTableView.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
-            // Remove the selected student from the table
             studentTableView.getItems().remove(selectedStudent);
 
-            // Clear the text fields
             clearTextFields();
         }
     }
